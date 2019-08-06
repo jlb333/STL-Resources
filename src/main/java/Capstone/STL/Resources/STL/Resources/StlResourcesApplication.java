@@ -8,6 +8,7 @@ public class StlResourcesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(StlResourcesApplication.class, args);
+
 	}
 
 }
