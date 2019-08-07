@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HelloController {
-
+//Hello World Application 
     @RequestMapping(value = "")
     @ResponseBody
     public String index() {
