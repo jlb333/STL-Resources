@@ -5,6 +5,7 @@ plugins {
 
 apply plugin: 'io.spring.dependency-management'
 
+
 group = 'Capstone.STL.Resources'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
@@ -27,4 +28,16 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	/*
+	group = 'org.apache.pdfbox'
+    //artifactId = 'pdfbox'
+	version = '2.0.6'
+*/
 }
+
+/* get error message when i try to incorporate code below; indicates failure to build due to this block of code.
+bootRun {
+	addResources = true
+}
+*/
