@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">STL Resources</title>
+
+    <!--
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <script type="text/javascript" th:source="@{/js/script.js}"></script>
+-->
+    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}"/>
+    <script type="text/javascript" th:source="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+<nav th:fragment="navigation">
+    <a href="/user/signup">Sign Up</a> |
+    <a href="/user/login">Log In</a>
+</nav>
+
+</body>
+</html>

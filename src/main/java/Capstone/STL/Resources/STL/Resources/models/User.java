@@ -5,21 +5,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class User {
 
-    @GeneratedValue
     @Id
-    Integer id;
+    @GeneratedValue
+    private int id;
 
     @Column(unique = true)
     @NotNull
-    String username;
+    @Size(min = 3,max = 15, message="Username must be between 3 to 15 characters")
+    private String username;
 
     @Column
     @NotNull
-    String password;
+    @Size(min = 3, max = 15, message="Password must be between 3 to 15 characters")
+    private String password;
 
     public User() {
     }
@@ -34,9 +37,11 @@ public class User {
         return id;
     }
 
+    //do I need a setter for user id?  Video:  Persisting Objects with JPA indicated id would not need a setter.
     public void setId(Integer id) {
         this.id = id;
     }
+
 
     public String getUsername() {
         return username;
