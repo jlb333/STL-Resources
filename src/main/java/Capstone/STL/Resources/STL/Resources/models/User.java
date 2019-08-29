@@ -1,54 +1,69 @@
 package Capstone.STL.Resources.STL.Resources.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.Set;
+
+import static javax.persistence.GenerationType.AUTO;
 
 @Entity
+@Table(name = "user")
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = AUTO)
+    @Column(name = "user_id")
     private int id;
 
-    @Column(unique = true)
-    @NotNull
-    @Size(min = 3,max = 15, message="Username must be between 3 to 15 characters")
-    private String username;
+    @Column(unique = true, name = "email")
+    @Email(message = "*Please provide a valid Email")
+    @NotEmpty(message = "*Please provide an email")
+    @Size(min = 3,max = 15, message="*Username is your email; username must be between 3 to 15 characters")
+    private String email;
 
-    @Column
-    @NotNull
-    @Size(min = 6, message="Password must be at least 6 characters")
+    @Column(name = "password")
+    @NotEmpty(message = "*Please provide your password")
+    @Size(min = 6, message="*Password must be at least 6 characters")
     private String password;
 
-    public User() {
-    }
+    @Column(name = "name")
+    @NotEmpty(message = "*Please provide your first name")
+    private String name;
 
-    public User(Integer id, String username, String password) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-    }
+    @Column(name = "last_name")
+    @NotEmpty(message = "*Please provide your last name")
+    private String lastName;
 
-    public Integer getId() {
+    @Column(name = "active")
+    private int active;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
+    public User(){}
+
+    public int getId() {
         return id;
     }
 
-    //do I need a setter for user id?  Video:  Persisting Objects with JPA indicated id would not need a setter.
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -59,4 +74,35 @@ public class User {
         this.password = password;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 }
