@@ -1,10 +1,5 @@
 package Capstone.STL.Resources.STL.Resources.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -24,8 +19,8 @@ public class User {
 
     @Column(unique = true, name = "email")
     @Email(message = "*Please provide a valid Email")
-    @NotEmpty(message = "*Please provide an email")
-    @Size(min = 3,max = 15, message="*Username is your email; username must be between 3 to 15 characters")
+    @NotEmpty(message = "*Please provide a valid Email")
+    @Size(min = 3,max = 30, message = "*Email must be between 3 to 30 characters")
     private String email;
 
     @Column(name = "password")

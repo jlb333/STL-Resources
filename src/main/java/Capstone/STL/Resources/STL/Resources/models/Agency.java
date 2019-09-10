@@ -17,14 +17,12 @@ public class Agency {
     @Column(name = "agency_id")
     private int id;
 
-    @Column(unique = true, name = "agency")
+    @Column(unique = true, name = "title")
     @NotEmpty(message = "*Please provide the name of the agency")
-    @Size(min = 1,max = 30, message="*Please provide the name of the agency")
-    private String agency;
+    private String title;
 
     @Column(name = "address1")
     @NotEmpty(message = "*Please provide the address of the agency")
-    @Size(min = 6, message="*Please provide the address of the agency")
     private String address1;
 
     @Column(name = "city")
@@ -38,7 +36,7 @@ public class Agency {
     @Column(name = "zipcode")
     @NotEmpty(message= "*Please provide the zip code")
     @Size(max = 5, message="*Please enter 5 digit zip code")
-    private int zipcode;
+    private String zipcode;
 
     @Column(name = "phone")
     @NotEmpty(message= "*Please enter a phone number in this format XXX-XXX-XXXX")
@@ -49,12 +47,7 @@ public class Agency {
 
     @Column(name = "additional_info")
     private String additional_info;
-
-    /*
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
-*/
+    
 
     public Agency() {}
 
@@ -66,12 +59,12 @@ public class Agency {
         this.id = id;
     }
 
-    public String getAgency() {
-        return agency;
+    public String getTitle() {
+        return title;
     }
 
-    public void setAgency(String agency) {
-        this.agency = agency;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getAddress1() {
@@ -98,11 +91,11 @@ public class Agency {
         this.state = state;
     }
 
-    public int getZipcode() {
+    public String getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(int zipcode) {
+    public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
 
