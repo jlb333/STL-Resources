@@ -30,6 +30,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
 
+    //@Value("${spring.queries.agency-query}")
+    //private String agencyQuery;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
         throws Exception {
