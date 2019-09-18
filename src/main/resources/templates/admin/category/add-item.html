@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Categories</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body class="container">
+<form th:action="@{/admin/home}" method="get">
+    <button class="btn btn-md btn-warning btn-block" type="Submit">Go To Home Page</button>
+</form>
+
+<form th:action="@{/admin/category}" method="get">
+    <button class="btn btn-md btn-info btn-block" name="category"
+            type="Submit">Categories
+    </button>
+</form>
+
+<h1 th:text="${title}">Default Title</h1>
+
+
+<form method="post" th:object="${form}" action="/admin/category/add-item">
+    <div class="form-group">
+        <label th:for="agencyId">Agency</label>
+        <span th:errors="*{agencyId}" class="error"></span>
+        <select name="agencyId">
+            <option th:each="agency : *{agencies}"
+                    th:text="${agency.title}"
+                    th:value="${agency.id}"></option>
+        </select>
+    </div>
+
+    <input type="hidden" name="categoryId" th:value="*{category.id}" />
+
+
+    <input type="submit" value="Add Agency to Category" />
+</form>
+
+</body>
+</html>

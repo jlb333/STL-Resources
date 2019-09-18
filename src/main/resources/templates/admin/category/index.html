@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Categories</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body class="container">
+<form th:action="@{/admin/home}" method="get">
+    <button class="btn btn-md btn-warning btn-block" type="Submit">Go To Home Page</button>
+</form>
+
+<h1 th:text="${title}">Default Title</h1>
+
+
+<p th:unless="${categories} and ${categories.size()}">No Categories</p>
+
+
+<ul>
+    <li th:each="category : ${categories}">
+        <a th:href="'/admin/category/view/' + ${category.id}" th:text="${category.name}"></a>
+    </li>
+</ul>
+
+<p><a href="/admin/category/add">Add Category</a></p>
+
+
+</body>
+</html>

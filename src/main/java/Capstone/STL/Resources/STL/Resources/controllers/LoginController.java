@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 
 import Capstone.STL.Resources.STL.Resources.models.User;
+import Capstone.STL.Resources.STL.Resources.service.AgencyService;
 import Capstone.STL.Resources.STL.Resources.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -19,6 +20,9 @@ public class LoginController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AgencyService agencyService;
 
     @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
     public ModelAndView login(){
@@ -64,6 +68,7 @@ public class LoginController {
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
         modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
+        modelAndView.addObject("agencies", agencyService.findAll() );
         modelAndView.setViewName("admin/home");
         return modelAndView;
     }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Agency</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form th:action="@{/admin/home}" method="get">
+    <button class="btn btn-md btn-warning btn-block" type="Submit">Go To Home Page</button>
+</form>
+<form method="post" style="max-width:600px;" action="/admin/edit/{id}" th:object="${agency}" >
+    <div class="form-group">
+        <label for="name-field">Name</label>
+        <input class="form-control" id="name-field" th:value="${agency.title}" type="text" name="title" />
+    </div>
+    <div class="form-group">
+        <label for="address-field">Address</label>
+        <input class="form-control" id="address-field" th:value="${agency.address1}" type="text" name="address1" />
+    </div>
+    <div class="form-group">
+        <label for="city-field">City</label>
+        <input class="form-control" id="city-field" th:value="${agency.city}" type="text" name="city" />
+    </div>
+    <div class="form-group">
+        <label for="state-field">State</label>
+        <input class="form-control" id="state-field" th:value="${agency.state}" type="text" name="state" />
+    </div>
+    <div class="form-group">
+        <label for="zipcode-field">Zip Code</label>
+        <input class="form-control" id="zipcode-field" th:value="${agency.zipcode}" type="text" name="zipcode" />
+    </div>
+    <div class="form-group">
+        <label for="phone-field">Phone</label>
+        <input class="form-control" id="phone-field" th:value="${agency.phone}" type="text" name="phone" />
+    </div>
+    <div class="form-group">
+        <label for="website-field">Website</label>
+        <input class="form-control" id="website-field" th:value="${agency.website}" type="text" name="website" />
+    </div>
+    <div class="form-group">
+        <label for="additional_info-field">Additional Info</label>
+        <input class="form-control" id="additional_info-field" th:value="${agency.additional_info}" type="text" name="additional_info" />
+    </div>
+    <input type="hidden" th:value="${agency.id}" name="agencyId" />
+    <input type="submit" value="Edit Agency" />
+</form>
+
+</body>
+</html>

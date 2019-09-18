@@ -24,6 +24,12 @@
         </button>
     </form>
 
+    <form th:action="@{/admin/category}" method="get">
+        <button class="btn btn-md btn-info btn-block" name="category"
+                type="Submit">Categories
+        </button>
+    </form>
+
     <div class="panel-group" style="margin-top:40px">
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -38,5 +44,36 @@
     </div>
 
 </div>
+
+<table class="table">
+
+    <tr>
+        <th>Agency Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+        <th>Phone</th>
+        <th>Website</th>
+        <th>Edit</th>
+    </tr>
+
+    <tr th:each="agency : ${agencies}">
+        <td th:text="${agency.title}"></td>
+        <td th:text="${agency.address1}"></td>
+        <td th:text="${agency.city}"></td>
+        <td th:text="${agency.state}"></td>
+        <td th:text="${agency.zipcode}"></td>
+        <td th:text="${agency.phone}"></td>
+        <td th:text="${agency.website}"></td>
+        <td><a th:href="@{'/admin/edit/' + ${agency.id}}">edit</a></td>
+    </tr>
+
+</table>
+
+<nav>
+    <a href="/admin/agencyRegistration">Add</a> |
+    <a href="/admin/remove">Remove</a>
+</nav>
 </body>
 </html>
